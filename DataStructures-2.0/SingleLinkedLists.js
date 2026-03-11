@@ -1,7 +1,6 @@
 // piece of data - val
 // reference to the next node - next
 
-
 class Node {
   constructor(val) {
     this.val = val;
@@ -30,27 +29,41 @@ class SinglyLinkedList {
   }
 
   pop() {
-    if(!this.head) {
-        return undefined
+    if (!this.head) {
+      return undefined;
     }
-    const current = this.head
-    const newTail = current
-    while(current.next) {
-        newTail = current
-        current = current.next
+    const current = this.head;
+    const newTail = current;
+    while (current.next) {
+      newTail = current;
+      current = current.next;
     }
 
-    this.tail = newTail
+    this.tail = newTail;
     this.tail.next = null;
 
-    this.length--
+    this.length--;
 
-    if(this.length === 0) {
-        this.head = null;
-        this.tail = null;
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
     }
 
     return current;
-   
-   }
+  }
+
+  shift() {
+    if (!this.head) {
+      return undefined;
+    }
+    const currentHead = this.head;
+    this.head = currentHead.next;
+    this.length--;
+
+    if (this.length === 0) {
+      this.tail = null;
+    }
+
+    return currentHead;
+  }
 }
